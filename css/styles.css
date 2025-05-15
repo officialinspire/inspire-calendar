@@ -53,6 +53,16 @@ header {
 
 .header-left, .header-right {
   flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  justify-content: flex-start;
+}
+
+.header-right {
+  justify-content: flex-end;
 }
 
 .header-center {
@@ -60,6 +70,8 @@ header {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
+  width: 50%;
+  white-space: nowrap;
 }
 
 .header-center h1 {
@@ -77,12 +89,6 @@ header {
   filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.7));
   transition: all 0.3s ease;
   animation: logo-pulse 4s infinite;
-}
-
-.header-right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 main {
@@ -175,7 +181,7 @@ footer {
 #connection-status {
   display: flex;
   align-items: center;
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
 #status-indicator {
@@ -434,13 +440,14 @@ button {
   border: 1px solid var(--primary-color);
   border-radius: 4px;
   padding: 5px 10px;
-  margin-left: 15px;
+  margin-left: 10px;
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.2s;
   text-transform: uppercase;
   font-family: 'Orbitron', sans-serif;
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 .logout-button:hover {
@@ -457,18 +464,42 @@ button {
     padding: 1rem;
   }
   
-  /* Fix header layout on mobile */
+  /* Fix header layout on mobile - THIS IS THE KEY SECTION FOR THE HEADER SPACING */
   header {
     padding: 0.5rem;
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    min-height: 80px;
+  }
+  
+  .header-left {
+    width: 100%;
+    justify-content: center;
+    order: 1;
+  }
+  
+  .header-center {
+    position: static;
+    transform: none;
+    width: 100%;
+    order: 2;
+    margin: 5px 0;
+  }
+  
+  .header-right {
+    width: 100%;
+    justify-content: center;
+    order: 3;
   }
   
   .header-center h1 {
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
   }
   
   #inspire-logo {
-    height: 30px;
+    height: 35px;
   }
 
   #status-text {
@@ -616,17 +647,24 @@ button {
   
   /* Even smaller header */
   .header-center h1 {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
   }
   
   #inspire-logo {
-    height: 25px;
+    height: 30px;
   }
   
   /* Make the buttons more compact */
   .button-group button {
     padding: 0.4rem 0.7rem;
     font-size: 0.7rem;
+  }
+
+  /* Super tiny screens need even more compact header */
+  .logout-button {
+    padding: 3px 6px;
+    font-size: 0.65rem;
   }
 }
 
@@ -644,6 +682,18 @@ button {
   
   header {
     padding: 0.3rem;
+    flex-direction: row; /* Keep horizontal in landscape */
+  }
+  
+  .header-left, .header-center, .header-right {
+    width: auto;
+    order: initial;
+  }
+  
+  .header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   main {
