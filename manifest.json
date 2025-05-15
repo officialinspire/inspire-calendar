@@ -1,0 +1,38 @@
+{
+  "name": "INSPIRE HQ Calendar",
+  "short_name": "HQ Calendar",
+  "description": "Team Calendar for INSPIRE HQ Dashboard",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0a0a20",
+  "theme_color": "#00ffcc",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "inspire.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "inspire.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "inspire.png",
+      "sizes": "320x568",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Add Event",
+      "url": "/index.html?action=add",
+      "icons": [{ "src": "inspire.png", "sizes": "192x192" }]
+    }
+  ]
+}

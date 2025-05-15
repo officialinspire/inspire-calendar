@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>INSPIRE HQ Calendar - Offline</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #00ffcc;
+      --secondary-color: #ff00ff;
+      --dark-bg: #0a0a20;
+      --medium-bg: #1a1a3a;
+      --light-bg: #2a2a4a;
+      --text-color: #ffffff;
+    }
+    
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .offline-container {
+      max-width: 600px;
+      padding: 40px;
+      background-color: var(--light-bg);
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
+      border: 1px solid var(--primary-color);
+    }
+    
+    h1 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .offline-icon {
+      font-size: 50px;
+      margin-bottom: 20px;
+      color: var(--secondary-color);
+    }
+    
+    p {
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .retry-button {
+      background-color: var(--primary-color);
+      color: var(--dark-bg);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+    
+    .retry-button:hover {
+      background-color: var(--secondary-color);
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+    }
+    
+    .logo {
+      width: 100px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.7));
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <img src="inspire.png" alt="INSPIRE Logo" class="logo">
+    <div class="offline-icon">📡</div>
+    <h1>You're Offline</h1>
+    <p>Don't worry! The INSPIRE HQ Calendar works offline. You can view your saved events and create new ones. Changes will sync when you're back online.</p>
+    <p>If you need to access the latest updates, please check your internet connection and try again.</p>
+    <button class="retry-button" onclick="window.location.reload()">Retry Connection</button>
+  </div>
+</body>
+</html>

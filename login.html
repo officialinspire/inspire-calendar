@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>INSPIRE HQ Calendar - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 2rem;
+      background-color: var(--light-bg);
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
+      border: 1px solid var(--primary-color);
+    }
+    
+    .login-title {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .login-logo {
+      display: block;
+      margin: 0 auto 20px auto;
+      height: 60px;
+      filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.7));
+    }
+    
+    .login-button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      background-color: var(--primary-color);
+      color: var(--dark-text);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+    }
+    
+    .login-button:hover {
+      background-color: var(--secondary-color);
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+    }
+    
+    body.login-page {
+      background-color: var(--dark-bg);
+      background-image: 
+        linear-gradient(0deg, rgba(10, 10, 32, 0.9) 0%, rgba(10, 10, 32, 0.7) 100%),
+        repeating-linear-gradient(45deg, rgba(0, 255, 204, 0.1) 0px, rgba(0, 255, 204, 0.1) 1px, transparent 1px, transparent 10px);
+    }
+  </style>
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <img src="inspire.png" alt="INSPIRE Logo" class="login-logo">
+    <h2 class="login-title">HQ Calendar</h2>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit" class="login-button">Login</button>
+    </form>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Redirect to main page if already logged in
+      if (localStorage.getItem('isLoggedIn') === 'true') {
+        window.location.href = 'index.html';
+      }
+      
+      document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        // Simple hardcoded credentials (replace with proper auth in production)
+        if (username === 'inspire' && password === 'teamhq2025') {
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('lastLogin', new Date().toISOString());
+          window.location.href = 'index.html';
+        } else {
+          alert('Invalid credentials. Please try again.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
