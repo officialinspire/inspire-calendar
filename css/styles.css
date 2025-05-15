@@ -1,0 +1,493 @@
+/* Cyberpunk Theme for INSPIRE HQ Calendar */
+:root {
+  --primary-color: #00ffcc; /* Neon cyan */
+  --secondary-color: #ff00ff; /* Neon magenta */
+  --accent-color: #ffff00; /* Neon yellow */
+  --dark-bg: #0a0a20; /* Dark blue-black */
+  --medium-bg: #1a1a3a; /* Medium blue-black */
+  --light-bg: #2a2a4a; /* Light blue-black */
+  --text-color: #ffffff; /* White text */
+  --dark-text: #000000; /* Black text for contrast on bright backgrounds */
+  --success-color: #00ff66; /* Neon green */
+  --danger-color: #ff3366; /* Neon red */
+  --warning-color: #ffcc00; /* Bright yellow */
+  --calendar-cell-bg: #111133; /* Dark blue for calendar cells */
+  --calendar-text: #ffffff; /* White text for calendar */
+  --calendar-today-bg: #2d2d6d; /* Highlighted background for today */
+  --calendar-border: #3f3f7d; /* Border color */
+  --event-bg: rgba(0, 255, 204, 0.2); /* Translucent cyan for events */
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Orbitron', 'Rajdhani', 'Blender Pro', sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--dark-bg);
+  background-image: 
+    linear-gradient(0deg, rgba(10, 10, 32, 0.9) 0%, rgba(10, 10, 32, 0.7) 100%),
+    repeating-linear-gradient(45deg, rgba(0, 255, 204, 0.1) 0px, rgba(0, 255, 204, 0.1) 1px, transparent 1px, transparent 10px);
+}
+
+/* Add this at the top of your CSS to import a cyberpunk-friendly font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+/* Updated header layout for centered title */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  position: relative;
+  background-color: var(--medium-bg);
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+}
+
+.header-left, .header-right {
+  flex: 1;
+}
+
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.header-center h1 {
+  margin: 0;
+  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+  font-size: 1.8rem;
+}
+
+#inspire-logo {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.7));
+  transition: all 0.3s ease;
+  animation: logo-pulse 4s infinite;
+}
+
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid var(--primary-color);
+  margin-top: 2rem;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  background-color: var(--medium-bg);
+}
+
+/* Calendar styles */
+#calendar {
+  background-color: var(--medium-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+  padding: 1rem;
+  border: 1px solid var(--primary-color);
+}
+
+/* FullCalendar customizations */
+.fc-theme-standard th {
+  background-color: var(--light-bg);
+  color: var(--primary-color);
+  border-color: var(--calendar-border);
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.fc .fc-daygrid-day-frame {
+  background-color: var(--calendar-cell-bg);
+  border-color: var(--calendar-border);
+  transition: background-color 0.2s;
+}
+
+.fc .fc-daygrid-day-frame:hover {
+  background-color: var(--light-bg);
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: var(--calendar-today-bg);
+}
+
+.fc-event {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--dark-text);
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.5);
+}
+
+.fc-button-primary {
+  background-color: var(--medium-bg) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+
+.fc-button-primary:hover {
+  background-color: var(--primary-color) !important;
+  color: var(--dark-text) !important;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+}
+
+.fc-button-primary:not(:disabled).fc-button-active, 
+.fc-button-primary:not(:disabled):active {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+  color: var(--dark-text) !important;
+}
+
+.fc-day-number {
+  color: var(--text-color);
+}
+
+.fc-day-header {
+  color: var(--primary-color);
+}
+
+/* Connection status indicator */
+#connection-status {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+#status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+#status-indicator.online {
+  background-color: var(--success-color);
+  box-shadow: 0 0 10px var(--success-color);
+}
+
+#status-indicator.offline {
+  background-color: var(--warning-color);
+  box-shadow: 0 0 10px var(--warning-color);
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 32, 0.8);
+  overflow: auto;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: var(--light-bg);
+  margin: 10vh auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
+  width: 90%;
+  max-width: 600px;
+  border: 1px solid var(--primary-color);
+  position: relative;
+  color: var(--text-color);
+}
+
+.close-button {
+  color: var(--primary-color);
+  float: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: var(--secondary-color);
+  text-shadow: 0 0 8px var(--secondary-color);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--medium-bg);
+  color: var(--text-color);
+  box-shadow: inset 0 0 5px rgba(0, 255, 204, 0.3);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+
+#save-button {
+  background-color: var(--primary-color);
+  color: var(--dark-text);
+}
+
+#save-button:hover {
+  background-color: var(--success-color);
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.7);
+}
+
+#delete-button {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+#delete-button:hover {
+  background-color: #ff0044;
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.7);
+}
+
+#cancel-button {
+  background-color: #4a4a6a;
+  color: white;
+}
+
+#cancel-button:hover {
+  background-color: #5a5a7a;
+}
+
+/* Add glowing border to modal during transition */
+@keyframes glow {
+  0% { box-shadow: 0 0 10px rgba(0, 255, 204, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(0, 255, 204, 0.9); }
+  100% { box-shadow: 0 0 10px rgba(0, 255, 204, 0.5); }
+}
+
+/* Apply this animation to modal when it's visible */
+.modal[style*="display: block"] .modal-content {
+  animation: glow 2s infinite;
+}
+
+/* Ensure calendar day numbers are visible */
+.fc-daygrid-day-number {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+/* Make today's date more prominent */
+.fc-day-today .fc-daygrid-day-number {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* Logo animation */
+@keyframes logo-pulse {
+  0% { filter: drop-shadow(0 0 5px rgba(0, 255, 204, 0.7)); }
+  50% { filter: drop-shadow(0 0 15px rgba(0, 255, 204, 0.9)); }
+  100% { filter: drop-shadow(0 0 5px rgba(0, 255, 204, 0.7)); }
+}
+
+/* Image upload styling */
+.image-upload-container {
+  margin-top: 10px;
+  position: relative;
+}
+
+#image-preview-container {
+  margin-top: 15px;
+  position: relative;
+  max-width: 100%;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+#image-preview {
+  max-width: 100%;
+  max-height: 200px;
+  display: block;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.image-hint {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: var(--primary-color);
+  opacity: 0.8;
+}
+
+/* Event with image styling */
+.event-with-image-icon {
+  position: relative;
+}
+
+.event-with-image-icon::after {
+  content: "📷";
+  position: absolute;
+  font-size: 10px;
+  right: 5px;
+  top: 5px;
+}
+
+/* Event detail view with image */
+.event-detail-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.event-image-container {
+  max-width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.event-image {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 4px;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+}
+
+/* Mobile layout adjustments */
+@media (max-width: 768px) {
+  .header-center h1 {
+    font-size: 1.4rem;
+  }
+  
+  #inspire-logo {
+    height: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .header-center {
+    position: static;
+    transform: none;
+  }
+  
+  .header-left, .header-right {
+    width: 100%;
+    display: flex;
+  }
+  
+  .header-left {
+    justify-content: center;
+  }
+  
+  .header-right {
+    justify-content: center;
+  }
+}   
+
+/* Logout button styling */
+.logout-button {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-left: 15px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+.logout-button:hover {
+  background-color: var(--danger-color);
+  color: white;
+  border-color: var(--danger-color);
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
