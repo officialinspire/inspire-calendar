@@ -82,6 +82,7 @@ header {
 .header-right {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 main {
@@ -174,7 +175,7 @@ footer {
 #connection-status {
   display: flex;
   align-items: center;
-  margin-right: 1rem;
+  margin-right: 8px;
 }
 
 #status-indicator {
@@ -426,43 +427,6 @@ button {
   box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
 }
 
-/* Mobile layout adjustments */
-@media (max-width: 768px) {
-  .header-center h1 {
-    font-size: 1.4rem;
-  }
-  
-  #inspire-logo {
-    height: 30px;
-  }
-}
-
-@media (max-width: 576px) {
-  header {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-  }
-  
-  .header-center {
-    position: static;
-    transform: none;
-  }
-  
-  .header-left, .header-right {
-    width: 100%;
-    display: flex;
-  }
-  
-  .header-left {
-    justify-content: center;
-  }
-  
-  .header-right {
-    justify-content: center;
-  }
-}   
-
 /* Logout button styling */
 .logout-button {
   background-color: transparent;
@@ -486,120 +450,207 @@ button {
   box-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
 /* Enhanced Mobile Responsiveness */
 @media screen and (max-width: 767px) {
-  /* Fix day header text spacing */
-  .fc-col-header-cell-cushion {
-    padding: 2px;
-    font-size: 0.8rem;
-    width: 100%;
-    text-align: center;
-    display: block;
+  /* Better layout for small screens */
+  main {
+    padding: 1rem;
   }
   
-  /* Adjust calendar cell size */
-  .fc .fc-daygrid-day-frame {
-    padding: 2px !important;
-    min-height: 1.5em;
-  }
-  
-  /* Make day numbers smaller */
-  .fc-daygrid-day-number {
-    font-size: 0.9rem;
-    padding: 2px !important;
-  }
-  
-  /* Ensure buttons don't overflow */
-  .fc-button {
-    padding: 0.2em 0.4em !important;
-    font-size: 0.8rem !important;
-  }
-  
-  /* Separate the day names */
-  .fc-col-header-cell {
-    padding: 2px;
-    text-align: center;
-  }
-  
-  /* Make the today button more visible */
-  .fc-today-button {
-    margin-left: 4px !important;
-    margin-right: 4px !important;
-  }
-  
-  /* Mobile-friendly header */
+  /* Fix header layout on mobile */
   header {
     padding: 0.5rem;
   }
   
   .header-center h1 {
     font-size: 1.2rem;
+    letter-spacing: 1px;
   }
   
   #inspire-logo {
     height: 30px;
   }
+
+  #status-text {
+    display: none; /* Hide status text, keep indicator dot */
+  }
   
-  /* Full calendar mobile tweaks */
+  .connection-status {
+    margin-right: 5px;
+  }
+  
+  .logout-button {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    margin-left: 5px;
+  }
+  
+  /* Adjust calendar toolbar */
+  .fc-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .fc-toolbar-chunk {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+  }
+  
+  /* Improve calendar title visibility */
   .fc-toolbar-title {
     font-size: 1.2rem !important;
+    text-align: center;
   }
   
-  /* Fix the day names squishing */
-  .fc-day-header, .fc-day-header span, 
+  /* Critical fix for day headers */
+  .fc-col-header-cell {
+    padding: 0 !important;
+  }
+  
   .fc-col-header-cell-cushion {
+    padding: 4px 0 !important;
+    font-size: 0.7rem;
+    display: block;
     width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    letter-spacing: -0.5px;
+    text-align: center;
   }
   
-  /* Mobile-friendly modal */
+  /* Mobile calendar body adjustments */
+  .fc-daygrid-day {
+    min-height: 2.5rem;
+  }
+  
+  .fc-daygrid-day-number {
+    padding: 2px !important;
+    font-size: 0.8rem;
+  }
+  
+  .fc-daygrid-day-top {
+    justify-content: center;
+  }
+  
+  /* Better modal on mobile */
   .modal-content {
     margin: 5vh auto;
     padding: 1rem;
     width: 95%;
   }
   
-  /* Improve button spacing in mobile view */
-  .button-group {
-    gap: 0.3rem;
+  /* Tighter form elements for mobile */
+  .form-group {
+    margin-bottom: 0.8rem;
   }
   
-  /* Make tap targets larger */
-  .fc-daygrid-day {
-    min-height: 40px;
+  label {
+    font-size: 0.9rem;
+  }
+  
+  input, textarea {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .button-group {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    flex: 1;
+  }
+  
+  /* Fix any scrollbars in the modal */
+  .modal {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Make weekday names stay separate */
+  .fc-day-header span {
+    white-space: nowrap;
+  }
+  
+  /* Fix touchpoint size for calendar cells */
+  .fc .fc-daygrid-day-frame {
+    padding: 2px !important;
+    min-height: auto;
+  }
+  
+  /* Ensure buttons don't overflow */
+  .fc-button {
+    padding: 0.2em 0.3em !important;
+    font-size: 0.7rem !important;
+  }
+  
+  /* Make sure calendar takes full width on mobile */
+  #calendar {
+    padding: 0.5rem;
+  }
+  
+  /* Ensure today button is visible */
+  .fc-today-button {
+    margin: 0 0.2rem !important;
+  }
+  
+  /* Adjust the spacing in the calendar grid */
+  .fc-scrollgrid {
+    border-collapse: collapse;
   }
 }
 
-/* Extra small screens (phones smaller than iPhone 8) */
+/* Extra small devices (phones smaller than iPhone 8) */
 @media screen and (max-width: 374px) {
-  /* Make day headers use smaller abbreviated names */
-  .fc-day-sun .fc-col-header-cell-cushion::after { content: "SU"; }
-  .fc-day-mon .fc-col-header-cell-cushion::after { content: "MO"; }
-  .fc-day-tue .fc-col-header-cell-cushion::after { content: "TU"; }
-  .fc-day-wed .fc-col-header-cell-cushion::after { content: "WE"; }
-  .fc-day-thu .fc-col-header-cell-cushion::after { content: "TH"; }
-  .fc-day-fri .fc-col-header-cell-cushion::after { content: "FR"; }
-  .fc-day-sat .fc-col-header-cell-cushion::after { content: "SA"; }
-  
+  /* Use ultra-compact day names */
   .fc-col-header-cell-cushion {
-    font-size: 0;
+    font-size: 0.6rem !important;
+    letter-spacing: -0.5px;
+    padding: 2px 0 !important;
   }
   
-  .fc-col-header-cell-cushion::after {
+  /* Make the today button text smaller */
+  .fc-today-button {
+    font-size: 0.65rem !important;
+  }
+  
+  /* Even smaller header */
+  .header-center h1 {
+    font-size: 1rem;
+  }
+  
+  #inspire-logo {
+    height: 25px;
+  }
+  
+  /* Make the buttons more compact */
+  .button-group button {
+    padding: 0.4rem 0.7rem;
     font-size: 0.7rem;
   }
+}
+
+/* Fix landscape mode issues */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+  .fc-toolbar {
+    font-size: 0.8rem;
+  }
   
-  /* Smaller calendar title on very small screens */
-  .fc-toolbar-title {
-    font-size: 1rem !important;
+  .modal-content {
+    margin: 2vh auto;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  header {
+    padding: 0.3rem;
+  }
+  
+  main {
+    padding: 0.5rem;
+  }
+  
+  .header-center h1 {
+    font-size: 1rem;
   }
 }
