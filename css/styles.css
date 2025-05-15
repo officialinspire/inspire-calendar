@@ -491,3 +491,115 @@ button {
   align-items: center;
   justify-content: flex-end;
 }
+
+/* Enhanced Mobile Responsiveness */
+@media screen and (max-width: 767px) {
+  /* Fix day header text spacing */
+  .fc-col-header-cell-cushion {
+    padding: 2px;
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+  
+  /* Adjust calendar cell size */
+  .fc .fc-daygrid-day-frame {
+    padding: 2px !important;
+    min-height: 1.5em;
+  }
+  
+  /* Make day numbers smaller */
+  .fc-daygrid-day-number {
+    font-size: 0.9rem;
+    padding: 2px !important;
+  }
+  
+  /* Ensure buttons don't overflow */
+  .fc-button {
+    padding: 0.2em 0.4em !important;
+    font-size: 0.8rem !important;
+  }
+  
+  /* Separate the day names */
+  .fc-col-header-cell {
+    padding: 2px;
+    text-align: center;
+  }
+  
+  /* Make the today button more visible */
+  .fc-today-button {
+    margin-left: 4px !important;
+    margin-right: 4px !important;
+  }
+  
+  /* Mobile-friendly header */
+  header {
+    padding: 0.5rem;
+  }
+  
+  .header-center h1 {
+    font-size: 1.2rem;
+  }
+  
+  #inspire-logo {
+    height: 30px;
+  }
+  
+  /* Full calendar mobile tweaks */
+  .fc-toolbar-title {
+    font-size: 1.2rem !important;
+  }
+  
+  /* Fix the day names squishing */
+  .fc-day-header, .fc-day-header span, 
+  .fc-col-header-cell-cushion {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.5px;
+  }
+  
+  /* Mobile-friendly modal */
+  .modal-content {
+    margin: 5vh auto;
+    padding: 1rem;
+    width: 95%;
+  }
+  
+  /* Improve button spacing in mobile view */
+  .button-group {
+    gap: 0.3rem;
+  }
+  
+  /* Make tap targets larger */
+  .fc-daygrid-day {
+    min-height: 40px;
+  }
+}
+
+/* Extra small screens (phones smaller than iPhone 8) */
+@media screen and (max-width: 374px) {
+  /* Make day headers use smaller abbreviated names */
+  .fc-day-sun .fc-col-header-cell-cushion::after { content: "SU"; }
+  .fc-day-mon .fc-col-header-cell-cushion::after { content: "MO"; }
+  .fc-day-tue .fc-col-header-cell-cushion::after { content: "TU"; }
+  .fc-day-wed .fc-col-header-cell-cushion::after { content: "WE"; }
+  .fc-day-thu .fc-col-header-cell-cushion::after { content: "TH"; }
+  .fc-day-fri .fc-col-header-cell-cushion::after { content: "FR"; }
+  .fc-day-sat .fc-col-header-cell-cushion::after { content: "SA"; }
+  
+  .fc-col-header-cell-cushion {
+    font-size: 0;
+  }
+  
+  .fc-col-header-cell-cushion::after {
+    font-size: 0.7rem;
+  }
+  
+  /* Smaller calendar title on very small screens */
+  .fc-toolbar-title {
+    font-size: 1rem !important;
+  }
+}
