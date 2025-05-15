@@ -1,5 +1,5 @@
 // Enhanced Service Worker for INSPIRE HQ Calendar
-const CACHE_NAME = 'inspire-calendar-v1';
+const CACHE_NAME = 'inspire-calendar-v2'; // Increased version to force cache refresh
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -49,6 +49,7 @@ self.addEventListener('activate', (event) => {
 
 // Fetch event - serve from cache or network with improved strategies
 self.addEventListener('fetch', (event) => {
+  // Handle the fetch event differently based on the request type
   const url = new URL(event.request.url);
   
   // Skip non-GET requests
@@ -63,7 +64,9 @@ self.addEventListener('fetch', (event) => {
   }
   
   // For page navigations (HTML requests), use network-first with offline fallback
-  if (event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
+  if (event.request.mode === 'navigate' || 
+      (event.request.method === 'GET' && 
+       event.request.headers.get('accept').includes('text/html'))) {
     event.respondWith(
       fetch(event.request)
         .catch(() => {
