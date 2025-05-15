@@ -1,5 +1,5 @@
 // Enhanced Service Worker for INSPIRE HQ Calendar
-const CACHE_NAME = 'inspire-calendar-v2'; // Increased version to force cache refresh
+const CACHE_NAME = 'inspire-calendar-v3'; // Increased version to force cache refresh
 const STATIC_ASSETS = [
   '/',
   '/index.html',
